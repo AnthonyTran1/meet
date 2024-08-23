@@ -1,0 +1,3 @@
+  GET - https://fwqvhwud5l.execute-api.us-west-2.amazonaws.com/dev/api/get-auth-url
+  GET - https://fwqvhwud5l.execute-api.us-west-2.amazonaws.com/dev/api/token/{code}
+  GET - https://fwqvhwud5l.execute-api.us-west-2.amazonaws.com/dev/api/get-events/{access_token}
