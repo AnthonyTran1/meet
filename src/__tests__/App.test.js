@@ -1,6 +1,6 @@
 // src/__tests__/App.test.js
 
-import { render, within } from "@testing-library/react";
+import { render, within, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { getEvents } from "../api";
 import App from "../App";
@@ -46,5 +46,25 @@ describe("<App /> integration", () => {
     allRenderedEventItems.forEach((event) => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
+  });
+
+  test("renders specific number of events when the user inputs value.", async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const NumberOfEventsDOM = AppDOM.querySelector("#search-number");
+    const numberTextBox = within(NumberOfEventsDOM).queryByRole("spinbutton");
+    await user.type(numberTextBox, "{backspace}{backspace}10");
+
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    await waitFor(() => {
+      const EventListItems = within(EventListDOM).queryAllByRole("listitem");
+      expect(EventListItems.length).toBe(10);
+    });
+
+    // const NOEItems = within(NumberOfEventsDOM).queryAllByRole("listitem");
+    // expect(NOEItems.length).toBe(10);
+    //9/2/2024 - expecting 10 items, getting 0 items
   });
 });
