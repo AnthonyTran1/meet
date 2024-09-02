@@ -9,16 +9,21 @@ const Event = ({ event }) => {
   };
 
   return (
-    <li>
-      <div onClick={handleItemClicked}>{"show details"}</div>
-
+    <li className="event">
+      <h2>{event && event.summary}</h2>
+      <p>{event && event.location}</p>
+      <p>{event && new Date(event.created).toUTCString()}</p>
       {showDetails ? (
-        <ul className="eventDetails">
-          <div>{event.summary}</div>
-          <div>{event.created}</div>
-          <div>{event.location}</div>
-        </ul>
+        <p className="details">{event && event.description}</p>
       ) : null}
+      <button
+        className="details-btn"
+        onClick={() => {
+          showDetails ? setShowDetails(false) : setShowDetails(true);
+        }}
+      >
+        {showDetails ? "hide details" : "show details"}
+      </button>
     </li>
   );
 };
