@@ -83,8 +83,8 @@ This application uses the Google Calendar API to fetch upcoming events.
   THEN the number of events shown is 32 (default)
 
 - Scenario: User can change the number of events displayed.<br/>
-  GIVEN when the user has specified a number, <br/>
-  WHEN the list of event is shown,<br/>
+  GIVEN the app is open, <br/>
+  WHEN when the user has specified a number,<br/>
   THEN the number of events shown is the entered number.
 
 ### Feature 4: Use the App When Offline
