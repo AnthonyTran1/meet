@@ -28,13 +28,15 @@ const App = () => {
   };
 
   useEffect(() => {
+    let infoText;
     if (navigator.onLine) {
       // set the warning alert message to an empty string ""
-      setOfflineAlert("");
+      infoText = "";
     } else {
       // set the warning alert message to a non-empty string
-      setOfflineAlert("You are currently offline. Your app usage is limited!");
+      infoText = "You are currently offline. Your app usage is limited!";
     }
+    setOfflineAlert(infoText);
     fetchData();
   }, [currentCity, currentNOE]);
 
