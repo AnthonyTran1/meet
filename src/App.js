@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import CitySearch from "./components/CitySearch";
 import CityEventsChart from "./components/CityEventChart";
+import EventGenresChart from "./components/EventGenresChart";
 import EventList from "./components/EventList";
 import NumberOfEvents from "./components/NumbersOfEvents";
 import { extractLocations, getEvents } from "./api";
@@ -58,7 +59,10 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
       />
-      <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="charts-container">
+        <EventGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
